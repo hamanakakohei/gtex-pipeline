@@ -6,6 +6,7 @@ import argparse
 import os
 import subprocess
 import gzip
+import random
 
 
 def has_dependency(name):
@@ -30,7 +31,8 @@ def patch_fam_phenotype(fam_in, fam_out):
     with open(fam_in) as f_in, open(fam_out, 'w') as f_out:
         for line in f_in:
             line = line.strip().split()
-            line[5] = '1'
+            #line[5] = '1'
+            line[5] = str(random.randint(1, 2))
             f_out.write('\t'.join(line) + '\n')
 
 
